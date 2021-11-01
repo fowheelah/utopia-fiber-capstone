@@ -1,0 +1,36 @@
+Download the Ubuntu 20.04.3 LTS iso file from https://ubuntu.com/download/desktop
+
+Use VMWare or Virtualbox or whatever you use to create the VM (use bridged network instead of NAT, up the RAM/processors to lower install time)
+
+Create a new user other than root and give it administrator privileges
+
+disable the root user (sudo passwd -l root)
+
+configure the UFW firewall and then enable it (sudo ufw default deny incoming / sudo ufw default allow outgoing / sudo ufw allow 22 / sudo ufw allow 3306 / sudo ufw enable)
+
+run the following in the terminal (sudo apt update, sudo apt install)
+
+Follow this tutorial to install MySQL (USE % INSTEAD OF LOCALHOST WHEN YOU CREATE A USER, OTHERWISE IT WON'T HAVE REMOTE ACCESS!)
+https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04
+
+If you run into problems creating a MySQL user with remote/admin privileges, I used the following commands
+mysql> CREATE USER 'insertusernamehere'@'%' IDENTIFIED BY 'insertpasswordhere';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'insertusernamehere'@'%' WITH GRANT OPTION;
+mysql> FLUSH PRIVILEGES;
+
+Install DBeaver on the device with a GUI that you will be using to connect to the MYSQL Database (https://dbeaver.io/download/)
+
+On the DBeaver connection, you need to add a new driver property called allowPublicKeyRetrieval and give it the value true
+
+You also need to edit the MYSQL config file and make the following change
+(nano /etc/mysql/my.cnf)
+
+At the bottom of the file add the following lines:
+[mysqld]
+port=3306 # or any other port
+bind-address=0.0.0.0
+
+Now restart MySQL (/etc/init.d/mysql restart)
+
+Find the IP address of your linux server, the name of the database you want to connect to, the mysql username/password and use port 3306.
+After entering all this information correctly you should be able to establish a connection to the database and begin creating tables/data.
