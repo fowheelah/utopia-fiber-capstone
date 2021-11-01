@@ -1,0 +1,71 @@
+PurpleAir API Documentation: api.purpleair.com
+
+GET request - https://api.purpleair.com/v1/sensors?fields=name,latitude,longitude,pm2.5_10minute,humidity,temperature,pressure&location_type=0&nwlng=-112.4&nwlat=41.74&selng=-111.55&selat=39.98
+
+Parameters
+
+fields=name,latitude,longitude,pm2.5_10minute,humidity,temperature,pressure (pm2.5_10minute represents the average air quality for that sensor over a 10 minute period)
+location_type= 0 (Outdoor sensors only for accurate readings)
+nwlng= -112.4	 (Only grabs information from sensors within the bounds of the longitude/latitude coordinates, All of the valley from North of Ogden to South of Payson)
+nwlat= 41.74
+selng= -111.55
+selat= 39.98
+
+Header
+
+X-API-Key= <Insert PurpleAir API READ Key Here>
+
+Response in JSON
+
+Sample Output
+
+{
+    "api_version": "V1.0.10-0.0.12",
+    "time_stamp": 1635795532,
+    "data_time_stamp": 1635795480,
+    "location_type": 0,
+    "max_age": 604800,
+    "firmware_default_version": "6.01",
+    "fields": [
+        "sensor_index",
+        "name",
+        "latitude",
+        "longitude",
+        "pm2.5_10minute",
+        "humidity",
+        "temperature",
+        "pressure"
+    ],
+    "data": [
+        [
+[
+            135,
+            "Octopod",
+            41.223026,
+            -111.9438,
+            0.8,
+            58,
+            68,
+            673.9
+        ],
+        [
+            429,
+            "Tooele South P1",
+            40.515217,
+            -112.30674,
+            22.6,
+            35,
+            71,
+            843.1
+        ],
+        [
+            459,
+            "Flight Park North 2",
+            40.474567,
+            -111.891495,
+            2.4,
+            37,
+            66,
+            844.6
+        ]
+]
