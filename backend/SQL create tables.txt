@@ -1,0 +1,45 @@
+CREATE TABLE public."location" (
+	location_id bigserial NOT NULL,
+	sensor_index int8 NOT NULL,
+	sensor_name varchar NULL,
+	latitude numeric NOT NULL,
+	longitude numeric NOT NULL,
+	CONSTRAINT location_pkey PRIMARY KEY (location_id),
+	CONSTRAINT location_un UNIQUE (sensor_index)
+);
+
+CREATE TABLE public.air_pressure (
+	"time" timestamp NOT NULL,
+	"location" int8 NOT NULL,
+	air_pressure numeric NOT NULL,
+	CONSTRAINT air_pressure_pkey PRIMARY KEY ("time", location),
+	CONSTRAINT air_pressure_fk FOREIGN KEY ("location") REFERENCES public."location"(location_id) ON UPDATE CASCADE
+);
+SELECT create_hypertable('air_pressure', 'time');
+
+CREATE TABLE public.air_quality (
+	"time" timestamp NOT NULL,
+	"location" int8 NOT NULL,
+	air_quality numeric NOT NULL,
+	CONSTRAINT air_quality_pkey PRIMARY KEY ("time", location),
+	CONSTRAINT air_quality_fk FOREIGN KEY ("location") REFERENCES public."location"(location_id) ON UPDATE CASCADE
+);
+SELECT create_hypertable('air_quality', 'time');
+
+CREATE TABLE public.humidity (
+	"time" timestamp NOT NULL,
+	"location" int8 NOT NULL,
+	humidity int4 NOT NULL,
+	CONSTRAINT humidity_pkey PRIMARY KEY ("time", location),
+	CONSTRAINT humidity_fk FOREIGN KEY ("location") REFERENCES public."location"(location_id) ON UPDATE CASCADE
+);
+SELECT create_hypertable('humidity', 'time');
+
+CREATE TABLE public.temperature (
+	"time" timestamp NOT NULL,
+	"location" int8 NOT NULL,
+	temperature int4 NOT NULL,
+	CONSTRAINT temperature_pkey PRIMARY KEY ("time", location),
+	CONSTRAINT temperature_fk FOREIGN KEY ("location") REFERENCES public."location"(location_id) ON UPDATE CASCADE
+);
+SELECT create_hypertable('temperature', 'time');
