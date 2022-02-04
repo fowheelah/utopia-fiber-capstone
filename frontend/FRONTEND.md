@@ -23,7 +23,31 @@ Admin
 ### Air Quality Sensor Layer
 
 Components
-- here
-    - here
-    - here
-- here
+- Node Popup
+    - Air Quality Node
+        - Severity Label
+        - Data Value
+        - Date/Time
+        - Location
+        - Sensor Name
+    - Security Camera Node
+        - Location
+        - Direction
+        - Status
+        - Date/Time
+        - Camera Name
+    - New Node Template
+        - Primary Data
+        - Secondary Data
+        - Secondary Data
+        - Date/Time
+        - Data Label
+- Side Panel Popup
+    - Historical Air Quality Data
+        - Label or Title
+        - Graph
+        - Aggregate Data (different averages)
+    - Security Camera Data (and Controls?)
+        - Live Camera Feed
+        - Camera Controls (activate, deactivate, etc?)
+    - New Panel Template (brainstorm other options?)
