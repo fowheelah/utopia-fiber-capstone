@@ -4,8 +4,6 @@
 
 ### Site Access Roles and Capabilities
 
-TESTINGGGG
-
 Public
 - No log in necessary
 - View public smart city data layers (e.g. Air Quality sensors)
