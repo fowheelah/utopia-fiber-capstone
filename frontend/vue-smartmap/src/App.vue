@@ -13,6 +13,7 @@ import HelloWorld from '@/components/HelloWorld.vue'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/login">Login</RouterLink>
       </nav>
     </div>
   </header>
@@ -81,13 +82,14 @@ nav a:first-of-type {
 
 @media (min-width: 1024px) {
   body {
-    display: flex;
+    display: block;
+    /* display: flex; */
     place-items: center;
   }
 
   #app {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
     padding: 0 2rem;
   }
 

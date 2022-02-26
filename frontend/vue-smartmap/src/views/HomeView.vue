@@ -4,6 +4,7 @@ import TheWelcome from '@/components/TheWelcome.vue'
 
 <template>
   <main>
-    <TheWelcome />
+    <h1>This is the Map page</h1>
+    <!-- <TheWelcome /> -->
   </main>
 </template>
