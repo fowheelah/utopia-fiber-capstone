@@ -10,7 +10,6 @@ const GOOGLE_MAPS_API_KEY = "";
 export default {
   name: "App",
   setup() {
-    const contentString = "Sample";
     const { coords } = useGeolocation();
     const currPos = computed(() => ({
       lat: coords.value.latitude,
@@ -25,10 +24,11 @@ export default {
         center: currPos.value,
         zoom: 8,
       });
-      const infowindow = new google.maps.InfoWindow({
-        content: contentString,
-      });
       for (let index = 0; index < sensorData.data.length; index++) {
+        const contentString = "<ul style=\"list-style-type:none;\"><li><h2>Name: " + sensorData.data[index].name + "<h2></li><li><h3>PM 2.5: " + sensorData.data[index].pm25 + "<h3></li>";
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString,
+        });
         const marker = new google.maps.Marker({
           position: {
             lat: sensorData.data[index].latitude,
