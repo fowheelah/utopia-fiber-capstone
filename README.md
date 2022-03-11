@@ -3,6 +3,14 @@ This is the Github for the Utopia Fiber SmartMap Capstone Project
 
 All source code and documentation for development can be found here in the corresponding frontend/backend folders.
 
+## Style Guide Resources
+
+in 'Style Guide' directory
+
+## Low Fidelity Designs
+
+Figma
+https://www.figma.com/file/OxQXoairUFvWArt17Ns8U2/CloudCity?node-id=2%3A3
 
 ## Vue App
 
