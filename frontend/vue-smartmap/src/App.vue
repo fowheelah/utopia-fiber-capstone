@@ -14,12 +14,42 @@ import HelloWorld from '@/components/HelloWorld.vue'
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/login">Login</RouterLink>
+        <RouterLink v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</RouterLink>
+        
       </nav>
+      <RouterView @authenticated="setAuthenticated" />
     </div>
   </header>
-
-  <RouterView />
+  <!-- <RouterView /> -->
 </template>
+
+<script>
+    export default {
+        name: 'App',
+        data() {
+            return {
+                authenticated: false,
+                mockAccount: {
+                    username: "username",
+                    password: "password"
+                }
+            }
+        },
+        mounted() {
+            if(!this.authenticated) {
+                this.$router.replace({ name: "login" });
+            }
+        },
+        methods: {
+            setAuthenticated(status) {
+                this.authenticated = status;
+            },
+            logout() {
+                this.authenticated = false;
+            }
+        }
+    }
+</script>
 
 <style>
 @import '@/assets/base.css';

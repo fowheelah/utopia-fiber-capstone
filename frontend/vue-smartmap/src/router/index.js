@@ -8,6 +8,9 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
+      // redirect: {
+      //   name: "map"
+      // }
     },
     {
       path: '/about',
@@ -21,6 +24,11 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: () => import('../views/Login.vue')
+    },
+    {
+      path: '/secure',
+      name: 'secure',
+      component: () => import('../views/Secure.vue')
     }
   ]
 })
