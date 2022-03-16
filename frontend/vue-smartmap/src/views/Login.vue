@@ -15,15 +15,19 @@
                 input: {
                     username: "",
                     password: ""
+                },
+                mockAccount: {
+                    username: "username",
+                    password: "password"
                 }
             }
         },
         methods: {
             login() {
                 if(this.input.username != "" && this.input.password != "") {
-                  // console.log(this.input.password);
-                  console.log(this.$parent.data.mockAccount.username);
-                    if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
+                  console.log("username: " + this.mockAccount.username);
+                  console.log("password: " + this.mockAccount.password);
+                    if(this.input.username == this.mockAccount.username && this.input.password == this.mockAccount.password) {
                         this.$emit("authenticated", true);
                         this.$router.replace({ name: "secure" });
                     } else {

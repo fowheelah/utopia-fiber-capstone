@@ -28,11 +28,7 @@ import HelloWorld from '@/components/HelloWorld.vue'
         name: 'App',
         data() {
             return {
-                authenticated: false,
-                mockAccount: {
-                    username: "username",
-                    password: "password"
-                }
+                authenticated: false
             }
         },
         mounted() {

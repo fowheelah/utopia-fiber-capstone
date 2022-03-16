@@ -1,4 +1,6 @@
 <script>
+//require('dotenv').config();
+
 /* eslint-disable no-undef */
 import { computed, ref, onMounted } from "vue";
 import { useGeolocation } from "../useGeolocation";
@@ -6,7 +8,8 @@ import { Loader } from "@googlemaps/js-api-loader";
 import sensorData from "../data/sensors.json";
 import circle from "@/components/icons/circle.svg";
 
-const GOOGLE_MAPS_API_KEY = "AIzaSyDxcOcU0EH6pLvwESsB6T3pFo0uFkWFohM";
+const GOOGLE_MAPS_API_KEY = "AIzaSyB9Bz6Wi3ZJKSCbw6WzE61Bh6u1HJgTTiA";
+//const GOOGLE_MAPS_API_KEY = process.env.GOOGLEMAPS_API_KEY;
 const iconBase = "/src/assets/circle";
 const icons = {
   green: {
