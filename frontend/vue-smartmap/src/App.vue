@@ -27,11 +27,7 @@ import { RouterLink, RouterView } from 'vue-router'
         name: 'App',
         data() {
             return {
-                authenticated: false,
-                mockAccount: {
-                    username: "username",
-                    password: "password"
-                }
+                authenticated: false
             }
         },
         mounted() {
