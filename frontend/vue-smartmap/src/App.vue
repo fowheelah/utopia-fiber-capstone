@@ -5,18 +5,32 @@ import HelloWorld from '@/components/HelloWorld.vue'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/login">Login</RouterLink>
-        <RouterLink v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</RouterLink>
-        
-      </nav>
+      <div id="nav">
+        <nav class="container navbar fixed-top navbar-expand-lg navbar-light bg-light">
+          <div class="logo">
+            <a href="#">
+              <img src="@/assets/UtopiaLogo.png" alt="Logo" width="60" height="60">
+            </a>
+          </div>
+         
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav mr-auto">
+              <RouterLink to="/">Home</RouterLink>
+              <RouterLink to="/about">About</RouterLink>
+              <RouterLink to="/login">Login</RouterLink>
+              <RouterLink v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</RouterLink>
+            </div>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </nav>
+      </div>
+  <router-view/> 
       <RouterView @authenticated="setAuthenticated" />
     </div>
   </header>
@@ -66,6 +80,11 @@ header {
 .logo {
   display: block;
   margin: 0 auto 2rem;
+}
+
+#navbarSupportedContent {
+  display: flex;
+  justify-content: flex-end;
 }
 
 a,
