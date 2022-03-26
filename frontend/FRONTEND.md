@@ -54,21 +54,21 @@ Components
 
 ## Style Guide Resources
 
-in 'Style Guide' directory
+UTOPIA Fiber brand styling in Style Guide directory (/frontend/Style Guide)
 
 ## Low Fidelity Designs
 
-Figma
-https://www.figma.com/file/OxQXoairUFvWArt17Ns8U2/CloudCity?node-id=2%3A3
+Low Fidelity Prototype [Figma Pages](https://www.figma.com/file/OxQXoairUFvWArt17Ns8U2/CloudCity?node-id=2%3A3)
 
 ## Vue App
 
 Only using Vue.js, not other app frameworks
 
-To run app:
+To run app locally:
 - cd to /frontend/vue-smartmap
 - run 'npm run dev' in the terminal
 - access page from local host
+- other dev instructions found in frontend/vue-smartmap/README.md
 
 ### Map Work
 
@@ -84,3 +84,33 @@ Goal:
 - access SecureView (/secure endpoint)
 - only be able to access secure page if LOGGED IN
 
+Here
+
+## Secure Page
+
+Here
+
+### Vue Code Documentation
+
+## Directory
+
+# File
+
+Function
+
+# File
+
+Function
+
+## Directory
+
+# File
+
+Function
+
+# File
+
+Function
+
+
+** [Helpful Markdown Guide](https://www.markdownguide.org/cheat-sheet/) ***
