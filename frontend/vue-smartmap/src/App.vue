@@ -4,9 +4,8 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <header>
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
 
+    <div class="wrapper">
       <div id="nav">
         <nav class="container navbar fixed-top navbar-expand-lg navbar-light bg-light">
           <div class="logo">
@@ -29,11 +28,10 @@ import { RouterLink, RouterView } from 'vue-router'
           </div>
         </nav>
       </div>
-  <router-view/> 
-      <RouterView @authenticated="setAuthenticated" />
     </div>
+    
+    <RouterView @authenticated="setAuthenticated" />
   </header>
-  <!-- <RouterView /> -->
 </template>
 
 <script>
