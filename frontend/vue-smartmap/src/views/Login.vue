@@ -1,8 +1,8 @@
 <template>
   <div class="login">
-    <h1>Login Page</h1>
-    <input type="text" name="username" v-model="input.username" placeholder="Username" />
-    <input type="password" name="password" v-model="input.password" placeholder="Password" />
+    <h1>Login</h1><br>
+    <input type="text" name="username" v-model="input.username" placeholder="Username" /><br><br>
+    <input type="password" name="password" v-model="input.password" placeholder="Password" /><br><br>
     <button type="button" v-on:click="login()">Login</button>
   </div>
 </template>
@@ -45,20 +45,23 @@
 <style>
 @media (min-width: 1024px) {
   .login {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     /* display: flex; */
     align-items: center;
+    align-content: center;
   }
 }
 
 .login {
-  /* width: 500px;
+  width: 500px;
+  height: 250px;
   border: 1px solid #CCCCCC;
   background-color: #FFFFFF;
   margin: auto;
   margin-top: 200px;
-  padding: 20px; */
-
+  padding: 20px;
+  text-align: center;
+  align-content: center;
 }
 
 </style>
