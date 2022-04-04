@@ -1,18 +1,20 @@
 <script>
 /* eslint-disable no-undef */
-import { computed, ref, onMounted, } from "vue";
+import { computed, ref, onMounted } from "vue";
 import { useGeolocation } from "../useGeolocation";
 import { Loader } from "@googlemaps/js-api-loader";
 import sensorData from "../data/sensors.json";
-import GreenIcon from '../components/icons/green_circle.svg' //these need to be changed so there isn't a clear square around the circle
-import YellowIcon from '../components/icons/yellow_circle.svg' //^^
-import OrangeIcon from '../components/icons/orange_circle.svg' //^^
-import RedIcon from '../components/icons/red_circle.svg'  //^^
-import PurpleIcon from '../components/icons/purple_circle.svg' //^^
-import MagentaIcon from '../components/icons/magenta_circle.svg' //^^
-import circle from '../components/icons/circle.svg'
+import camera from "../data/cameras.json";
+import GreenIcon from "../components/icons/green_circle.svg"; //these need to be changed so there isn't a clear square around the circle
+import YellowIcon from "../components/icons/yellow_circle.svg"; //^^
+import OrangeIcon from "../components/icons/orange_circle.svg"; //^^
+import RedIcon from "../components/icons/red_circle.svg"; //^^
+import PurpleIcon from "../components/icons/purple_circle.svg"; //^^
+import MagentaIcon from "../components/icons/magenta_circle.svg"; //^^
+import circle from "../components/icons/circle.svg";
+import CameraIcon from "../components/icons/camera.svg"
 
-const GOOGLE_MAPS_API_KEY = "";
+const GOOGLE_MAPS_API_KEY = "AIzaSyAe1k1GhDG7EOaPNiOVvaY9NC0EUkTfGXc";
 
 export default {
   name: "App",
@@ -24,6 +26,7 @@ export default {
     }));
     const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
     const mapDiv = ref(null);
+    const authenticated = false;
     onMounted(async () => {
       //sensorInfo = await fetch(url);
       await loader.load();
@@ -31,50 +34,75 @@ export default {
         center: currPos.value,
         zoom: 12,
       });
-      for (let index = 0; index < sensorData.data.length; index++) {
-        let value = sensorData.data[index].pm25;
-        let icon = circle;
-        let label = value.toString();
-        if (value >= 0.0 && value <= 12.0) {
-          icon = GreenIcon;
-        } else if (value > 12.0 && value <= 35.4) {
-          icon = YellowIcon;
-        } else if (value > 35.4 && value <= 55.4) {
-          icon = OrangeIcon;
-        } else if (value > 55.4 && value <= 150.4) {
-          icon = RedIcon;
-        } else if (value > 150.4 && value <= 250.4) {
-          icon = PurpleIcon;
-        } else if (value > 250.4 && value <= 500.4) {
-          icon = MagentaIcon;
-        }
-        const contentString =
-          '<ul style="list-style-type:none;"><li><h2>Name: ' + //make styling changes here
-          sensorData.data[index].name +
-          "<h2></li><li><h3>PM 2.5: " +
-          value +
-          "<h3></li>";
-        const infowindow = new google.maps.InfoWindow({
-          content: contentString,
-        });
-        const marker = new google.maps.Marker({
-          position: {
-            lat: sensorData.data[index].latitude,
-            lng: sensorData.data[index].longitude,
-          },
-          label: label,
-          map: map,
-          icon: icon,
-        });
-        marker.addListener("click", () => {
-          infowindow.open({
-            anchor: marker,
-            map,
-            shouldFocus: false,
+      if (!authenticated) {
+        for (let index = 0; index < sensorData.data.length; index++) {
+          let value = sensorData.data[index].pm25;
+          let icon = circle;
+          let label = value.toString();
+          if (value >= 0.0 && value <= 12.0) {
+            icon = GreenIcon;
+          } else if (value > 12.0 && value <= 35.4) {
+            icon = YellowIcon;
+          } else if (value > 35.4 && value <= 55.4) {
+            icon = OrangeIcon;
+          } else if (value > 55.4 && value <= 150.4) {
+            icon = RedIcon;
+          } else if (value > 150.4 && value <= 250.4) {
+            icon = PurpleIcon;
+          } else if (value > 250.4 && value <= 500.4) {
+            icon = MagentaIcon;
+          }
+          const contentString =
+            '<ul style="list-style-type:none;"><li><h2>Name: ' + //make styling changes here
+            sensorData.data[index].name +
+            "<h2></li><li><h3>PM 2.5: " +
+            value +
+            "<h3></li>";
+          const infowindow = new google.maps.InfoWindow({
+            content: contentString,
           });
-        });
+          const marker = new google.maps.Marker({
+            position: {
+              lat: sensorData.data[index].latitude,
+              lng: sensorData.data[index].longitude,
+            },
+            label: label,
+            map: map,
+            icon: icon,
+          });
+          marker.addListener("click", () => {
+            infowindow.open({
+              anchor: marker,
+              map,
+              shouldFocus: true,
+            });
+          });
+        }
+      } else if (authenticated) {
+        for (let index = 0; index < camera.data.length; index++) {
+          const infowindow = new google.maps.InfoWindow({
+            content: camera.data[index].name,
+          });
+          const marker = new google.maps.Marker({
+            position: {
+              lat: camera.data[index].latitude,
+              lng: camera.data[index].longitude,
+            },
+            label: camera.data[index].name,
+            map: map,
+            icon: circle,
+          });
+          marker.addListener("click", () => {
+            infowindow.open({
+              anchor: marker,
+              map,
+              shouldFocus: false,
+            });
+          });
+        }
       }
     });
+
     return { currPos, mapDiv };
   },
 };
