@@ -1,0 +1,15 @@
+:root {
+    --primary-green: #cfde00;
+    --primary-orange: #f27024;
+    --primary-blue: #2ebdbd;
+    --dark-green: #9aa93a;
+    --dark-orange: #bc3a26;
+    --dark-blue: #07938d;
+    --light-green: rgb(227, 231, 172);
+    --light-orange: rgb(246, 172, 83);
+    --light-blue: rgb(144, 213, 225);
+  
+    /*
+    add air scale colors here ?
+    */
+  }

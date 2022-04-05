@@ -51,3 +51,66 @@ Components
         - Live Camera Feed
         - Camera Controls (activate, deactivate, etc?)
     - New Panel Template (brainstorm other options?)
+
+## Style Guide Resources
+
+UTOPIA Fiber brand styling in Style Guide directory (/frontend/Style Guide)
+
+## Low Fidelity Designs
+
+Low Fidelity Prototype [Figma Pages](https://www.figma.com/file/OxQXoairUFvWArt17Ns8U2/CloudCity?node-id=2%3A3)
+
+## Vue App
+
+Only using Vue.js, not other app frameworks
+
+To run app locally:
+- cd to /frontend/vue-smartmap
+- run 'npm run dev' in the terminal
+- access page from local host
+- other dev instructions found in frontend/vue-smartmap/README.md
+
+### Map Work
+
+Here
+
+### Login Pages
+
+Following example at this site 
+https://www.thepolyglotdeveloper.com/2018/04/simple-user-login-vuejs-web-application/
+
+Goal:
+- login successfully
+- access SecureView (/secure endpoint)
+- only be able to access secure page if LOGGED IN
+
+Here
+
+## Secure Page
+
+Here
+
+### Vue Code Documentation
+
+## Directory
+
+# File
+
+Function
+
+# File
+
+Function
+
+## Directory
+
+# File
+
+Function
+
+# File
+
+Function
+
+
+** [Helpful Markdown Guide](https://www.markdownguide.org/cheat-sheet/) ***

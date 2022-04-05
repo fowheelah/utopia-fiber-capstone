@@ -1,3 +1,19 @@
+:root {
+  --primary-green: #cfde00;
+  --primary-orange: #f27024;
+  --primary-blue: #2ebdbd;
+  --dark-green: #9aa93a;
+  --dark-orange: #bc3a26;
+  --dark-blue: #07938d;
+  --light-green: rgb(227, 231, 172);
+  --light-orange: rgb(246, 172, 83);
+  --light-blue: rgb(144, 213, 225);
+
+  /*
+  add air scale colors here ?
+  */
+}
+
 .App {
   text-align: center;
 }
@@ -41,4 +57,13 @@
   padding-left: 3em;
   padding-right: 3em;
   margin-top: 3em;
+}
+
+/* for testing circle.svg 
+   link
+    https://www.w3docs.com/snippets/css/how-to-create-an-svg-drop-shadow.html
+*/
+.shadow {
+  -webkit-filter: drop-shadow( 4px 4px 3px rgba(0, 0, 0, .7));
+  filter: drop-shadow( 4px 4px 3px rgba(0, 0, 0, .7));
 }
