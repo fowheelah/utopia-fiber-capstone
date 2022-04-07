@@ -80,14 +80,6 @@ export default {
           });
           activeInfoWindow = infowindow;
         });
-        /*google.maps.event.addListener(marker, "click", function(event){
-          if (currentInfoWindow != null) {
-            currentInfoWindow.close();
-          }
-          infowindow.open(map, marker);
-          currentInfoWindow = infowindow; 
-        });*/
-
         google.maps.event.addListener(map, "click", function(event){
           infowindow.close();
         });
