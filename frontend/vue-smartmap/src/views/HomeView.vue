@@ -11,8 +11,7 @@ import RedIcon from "../components/icons/red_circle.svg"; //^^
 import PurpleIcon from "../components/icons/purple_circle.svg"; //^^
 import MagentaIcon from "../components/icons/magenta_circle.svg"; //^^
 import circle from "../components/icons/circle.svg";
-import GOOGLE_MAPS_API_KEY from "/var/local/google_api";
-
+const GOOGLE_MAPS_API_KEY = "";
 export default {
   name: "App",
   setup() {
