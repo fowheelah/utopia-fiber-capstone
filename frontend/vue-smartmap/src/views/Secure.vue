@@ -5,8 +5,7 @@ import { useGeolocation } from "../useGeolocation";
 import { Loader } from "@googlemaps/js-api-loader";
 import camera from "../data/cameras.json";
 import CameraIcon from "../components/icons/camera.svg";
-
-const GOOGLE_MAPS_API_KEY = "";
+import GOOGLE_MAPS_API_KEY from "/var/local/google_api";
 
 export default {
   name: "App",
