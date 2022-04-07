@@ -53,9 +53,12 @@ export default {
           "<h2></li><li><h3>PM 2.5: " +
           value +
           "<h3></li></iframe>";
+        
+        var activeInfoWindow = null;
         const infowindow = new google.maps.InfoWindow({
           content: contentString,
         });
+        
         const marker = new google.maps.Marker({
           position: {
             lat: sensorData.data[index].latitude,
@@ -65,13 +68,26 @@ export default {
           map: map,
           icon: icon,
         });
+
         marker.addListener("click", () => {
+          if (activeInfoWindow) {
+            activeInfoWindow.close();
+          }
           infowindow.open({
             anchor: marker,
             map,
             shouldFocus: true,
           });
+          activeInfoWindow = infowindow;
         });
+        /*google.maps.event.addListener(marker, "click", function(event){
+          if (currentInfoWindow != null) {
+            currentInfoWindow.close();
+          }
+          infowindow.open(map, marker);
+          currentInfoWindow = infowindow; 
+        });*/
+
         google.maps.event.addListener(map, "click", function(event){
           infowindow.close();
         });
