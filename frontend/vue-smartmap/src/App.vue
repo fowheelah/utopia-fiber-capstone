@@ -4,27 +4,21 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <header>
-
     <div class="wrapper">
       <div id="nav">
         <nav class="container navbar fixed-top navbar-expand-lg navbar-light bg-light">
           <div class="logo">
             <a href="#">
-              <img src="@/assets/UtopiaLogo.png" alt="Logo" width="60" height="60">
+              <img src="@/assets/UtopiaLogo.png" alt="Logo" width="30" height="30">
             </a>
           </div>
          
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav mr-auto">
               <RouterLink to="/">Home</RouterLink>
-              <RouterLink to="/about">About</RouterLink>
               <RouterLink to="/login">Login</RouterLink>
               <RouterLink v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</RouterLink>
             </div>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
           </div>
         </nav>
       </div>
@@ -44,7 +38,7 @@ import { RouterLink, RouterView } from 'vue-router'
         },
         mounted() {
             if(!this.authenticated) {
-                this.$router.replace({ name: "login" });
+                this.$router.replace({ name: "home" });
             }
         },
         methods: {
@@ -62,16 +56,13 @@ import { RouterLink, RouterView } from 'vue-router'
 @import '@/assets/base.css';
 
 #app {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-
   font-weight: normal;
 }
 
 header {
   line-height: 1.5;
-  max-height: 100vh;
 }
 
 .logo {
@@ -125,20 +116,19 @@ nav a:first-of-type {
 @media (min-width: 1024px) {
   body {
     display: block;
-    /* display: flex; */
+    display: flex;
     place-items: center;
   }
 
   #app {
     display: grid;
-    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
 
   header {
     display: flex;
     place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
   }
 
   header .wrapper {
