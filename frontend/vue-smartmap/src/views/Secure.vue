@@ -46,6 +46,9 @@ export default {
             shouldFocus: true,
           });
         });
+        google.maps.event.addListener(map, "click", function(event){
+          infowindow.close();
+        });
       }
     });
 

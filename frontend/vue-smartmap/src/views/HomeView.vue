@@ -52,11 +52,11 @@ export default {
           icon = MagentaIcon;
         }
         const contentString =
-          '<ul style="list-style-type:none;"><li><h2>Name: ' + //make styling changes here
+          '<iframe src="http://10.128.14.220:3000/d-solo/oog6Goynk/utopia-fiber?var-sensorname='+sensorData.data[index].name+'&var-tables=air_quality&from=1633578988739&to=1649303788739&orgId=1&panelId=2" width="450" height="200" frameborder="0"><li><h2>Name: ' + //make styling changes here
           sensorData.data[index].name +
           "<h2></li><li><h3>PM 2.5: " +
           value +
-          "<h3></li>";
+          "<h3></li></iframe>";
         const infowindow = new google.maps.InfoWindow({
           content: contentString,
         });
@@ -75,6 +75,9 @@ export default {
             map,
             shouldFocus: true,
           });
+        });
+        google.maps.event.addListener(map, "click", function(event){
+          infowindow.close();
         });
       }
     });
