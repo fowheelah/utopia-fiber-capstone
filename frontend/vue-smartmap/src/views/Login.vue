@@ -8,37 +8,49 @@
 </template>
 
 <script>
-    export default {
-        name: 'Login',
-        data() {
-            return {
-                input: {
-                    username: "",
-                    password: ""
-                },
-                mockAccount: {
-                    username: "username",
-                    password: "password"
-                }
+  // import { getPassword } from '../databasepg'
+  const crypto  = require('crypto');
+  export default {
+    name: 'Login',
+    data() {
+      return {
+          input: {
+              username: "",
+              password: ""
+          }
+          // ,
+          // mockAccount: {
+          //     username: "username",
+          //     password: "password"
+          // }
+      }
+    },
+    methods: {
+      login() {
+        if(this.input.username != "" && this.input.password != "") {
+          // console.log("username: " + this.mockAccount.username);
+          // console.log("password: " + this.mockAccount.password);
+
+            // const {compare, salt} = getPassword(this.input.username);
+            // const pwd = this.input.password + salt
+            // const hash = crypto.createHash('sha256').update(pwd).digest('base64');
+            // if(hash == compare) {
+            console.log("username: " + this.mockAccount.username);
+            console.log("password: " + this.mockAccount.password);
+            if(this.input.username == this.mockAccount.username && this.input.password == this.mockAccount.password) {
+                this.$emit("authenticated", true);
+                this.$router.replace({ name: "secure" });
+            } else {
+                console.log("The username and / or password is incorrect");
             }
-        },
-        methods: {
-            login() {
-                if(this.input.username != "" && this.input.password != "") {
-                  console.log("username: " + this.mockAccount.username);
-                  console.log("password: " + this.mockAccount.password);
-                    if(this.input.username == this.mockAccount.username && this.input.password == this.mockAccount.password) {
-                        this.$emit("authenticated", true);
-                        this.$router.replace({ name: "secure" });
-                    } else {
-                        console.log("The username and / or password is incorrect");
-                    }
-                } else {
-                    console.log("A username and password must be present");
-                }
-            }
+        } else {
+            console.log("A username and password must be present");
         }
+      }
+      // ,
+      // getPassword
     }
+  }
 </script>
 
 
