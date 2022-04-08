@@ -26,6 +26,7 @@ export default {
         zoom: 12,
       });
       for (let index = 0; index < camera.data.length; index++) {
+        var activeInfoWindow = null;
         const infowindow = new google.maps.InfoWindow({
           content: camera.data[index].name,
         });
@@ -39,11 +40,15 @@ export default {
           icon: CameraIcon,
         });
         marker.addListener("click", () => {
+          if (activeInfoWindow) {
+            activeInfoWindow.close();
+          }
           infowindow.open({
             anchor: marker,
             map,
             shouldFocus: true,
           });
+          activeInfoWindow = infowindow;
         });
         google.maps.event.addListener(map, "click", function(event){
           infowindow.close();
