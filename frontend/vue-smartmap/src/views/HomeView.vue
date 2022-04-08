@@ -3,8 +3,8 @@
 import { computed, ref, onMounted } from "vue";
 import { useGeolocation } from "../useGeolocation";
 import { Loader } from "@googlemaps/js-api-loader";
-import sensorData from "../data/sensors.json";
-//import sensorData from "/home/Scripts/jsonfiles/current.json";
+// import sensorData from "../data/sensors.json";
+import sensorData from "/home/Scripts/jsonfiles/current.json";
 import GreenIcon from "../components/icons/green_circle.svg";
 import YellowIcon from "../components/icons/yellow_circle.svg";
 import OrangeIcon from "../components/icons/orange_circle.svg";
