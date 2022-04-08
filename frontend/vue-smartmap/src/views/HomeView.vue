@@ -3,7 +3,8 @@
 import { computed, ref, onMounted } from "vue";
 import { useGeolocation } from "../useGeolocation";
 import { Loader } from "@googlemaps/js-api-loader";
-import sensorData from "/home/Scripts/jsonfiles/current.json";
+import sensorData from "../data/sensors.json";
+//import sensorData from "/home/Scripts/jsonfiles/current.json";
 import GreenIcon from "../components/icons/green_circle.svg";
 import YellowIcon from "../components/icons/yellow_circle.svg";
 import OrangeIcon from "../components/icons/orange_circle.svg";
@@ -48,17 +49,19 @@ export default {
           icon = MagentaIcon;
         }
         const contentString =
-          '<iframe src="http://10.128.14.220:3000/d-solo/oog6Goynk/utopia-fiber?var-sensorname='+sensorData.data[index].name+'&var-tables=air_quality&from=1633578988739&to=1649303788739&orgId=1&panelId=2" width="450" height="200" frameborder="0"><li><h2>Name: ' + //make styling changes here
+          '<iframe src="http://10.128.14.220:3000/d-solo/oog6Goynk/utopia-fiber?var-sensorname=' +
+          sensorData.data[index].name +
+          '&var-tables=air_quality&from=now-60d&to=now&orgId=1&panelId=2" width="630" height="280" frameborder="0"><li><h2>Name: ' + //make styling changes here
           sensorData.data[index].name +
           "<h2></li><li><h3>PM 2.5: " +
           value +
           "<h3></li></iframe>";
-        
+
         var activeInfoWindow = null;
         const infowindow = new google.maps.InfoWindow({
           content: contentString,
         });
-        
+
         const marker = new google.maps.Marker({
           position: {
             lat: sensorData.data[index].latitude,
@@ -80,7 +83,7 @@ export default {
           });
           activeInfoWindow = infowindow;
         });
-        google.maps.event.addListener(map, "click", function(event){
+        google.maps.event.addListener(map, "click", function (event) {
           infowindow.close();
         });
       }
