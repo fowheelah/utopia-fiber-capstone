@@ -3,13 +3,14 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
+  <div>
   <header>
     <div class="wrapper">
       <div id="nav">
-        <nav class="container navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <nav class="container navbar fixed-top navbar-expand-lg navbar-light">
           <div class="logo">
             <a href="#">
-              <img src="@/assets/UtopiaLogo.png" alt="Logo" width="30" height="30">
+              <img src="@/assets/UtopiaLogo.png" alt="Logo" width="50" height="50">
             </a>
           </div>
          
@@ -23,9 +24,13 @@ import { RouterLink, RouterView } from 'vue-router'
         </nav>
       </div>
     </div>
-    
-    <RouterView @authenticated="setAuthenticated" />
   </header>
+
+  <div>
+    <RouterView @authenticated="setAuthenticated" />
+  </div>
+
+  </div>
 </template>
 
 <script>
@@ -54,20 +59,21 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style>
 @import '@/assets/base.css';
+@import '@/styles/Variables.css';
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 #app {
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
-}
-
-header {
-  line-height: 1.5;
+  background-color: var(--primary-blue);
+  font-family: 'Raleway', sans-serif;
 }
 
 .logo {
   display: block;
   margin: 0 auto 2rem;
+  background-color: white;
 }
 
 #navbarSupportedContent {
@@ -93,6 +99,7 @@ nav {
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
+  background-color: gray;
 }
 
 nav a.router-link-exact-active {
@@ -118,12 +125,6 @@ nav a:first-of-type {
     display: block;
     display: flex;
     place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
   }
 
   header {

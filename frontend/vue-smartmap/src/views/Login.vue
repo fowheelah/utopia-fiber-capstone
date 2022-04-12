@@ -43,22 +43,13 @@
 
 
 <style>
-@media (min-width: 1024px) {
-  .login {
-    /* min-height: 100vh; */
-    /* display: flex; */
-    align-items: center;
-    align-content: center;
-  }
-}
 
 .login {
-  width: 500px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   border: 1px solid #CCCCCC;
   background-color: #FFFFFF;
   margin: auto;
-  margin-top: 200px;
   padding: 20px;
   text-align: center;
   align-content: center;
