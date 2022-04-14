@@ -26,15 +26,3 @@ Backend Code Documentation found [here](./backend/BACKEND.md)
 Create and host frontend app.
 
 Access directory [here](./frontend/vue-smartmap/)
-
-### Name
-
-What for
-
-### Name
-
-What for
-
-### Name
-
-What for
