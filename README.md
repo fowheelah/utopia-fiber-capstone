@@ -11,7 +11,6 @@ Access Frontend directory [here](./frontend/)
 
 ### Backend
 
-General Description
 Access Backend directory [here](./backend/)
 
 ## Documentation
