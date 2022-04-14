@@ -7,7 +7,7 @@ import { useGeolocation } from "../useGeolocation";
 import { Loader } from "@googlemaps/js-api-loader";
 import camera from "../data/cameras.json";
 import CameraIcon from "../components/icons/camera.svg";
-const GOOGLE_MAPS_API_KEY = "AIzaSyCE3beFO3ElLgnWXvX2kiQrhjz5gsSz19c";
+const GOOGLE_MAPS_API_KEY = ""; //Add api key here
 
 export default {
   name: "App",
@@ -21,7 +21,6 @@ export default {
     const mapDiv = ref(null);
     const authenticated = false;
     onMounted(async () => {
-      //sensorInfo = await fetch(url);
       await loader.load();
       const map = new google.maps.Map(mapDiv.value, {
         center: currPos.value,
