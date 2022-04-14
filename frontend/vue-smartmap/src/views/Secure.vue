@@ -1,11 +1,13 @@
 <script>
-/* eslint-disable no-undef */
+/* eslint-disable no-undef
+* This will load after authentication. Loads with camera location makers and links to live feeds. This mimics HomeView.vue
+*/
 import { computed, ref, onMounted } from "vue";
 import { useGeolocation } from "../useGeolocation";
 import { Loader } from "@googlemaps/js-api-loader";
-import camera from "../data/cameras.json";
+import camera from "../data/cameras.json"; //modify to add or remove cameras
 import CameraIcon from "../components/icons/camera.svg";
-const GOOGLE_MAPS_API_KEY = "AIzaSyCE3beFO3ElLgnWXvX2kiQrhjz5gsSz19c";
+const GOOGLE_MAPS_API_KEY = ""; //add api key here
 
 export default {
   name: "App",
@@ -19,7 +21,6 @@ export default {
     const mapDiv = ref(null);
     const authenticated = false;
     onMounted(async () => {
-      //sensorInfo = await fetch(url);
       await loader.load();
       const map = new google.maps.Map(mapDiv.value, {
         center: currPos.value,
@@ -35,7 +36,6 @@ export default {
             lat: camera.data[index].latitude,
             lng: camera.data[index].longitude,
           },
-          // label: camera.data[index].name,
           map: map,
           icon: CameraIcon,
         });

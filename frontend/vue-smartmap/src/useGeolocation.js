@@ -1,7 +1,8 @@
+// Function to get user gps coordinates
 import { onUnmounted, onMounted, ref } from "vue";
 
 export function useGeolocation() {
-    const coords = ref({ latitude: 40.22, longitude: -111.68 })
+    const coords = ref({ latitude: 40.22, longitude: -111.68 }) //defaults to UTOPIA Fiber HQ
     const isSupported = 'navigator' in window && 'geolocation' in navigator
 
     let watcher = null

@@ -25,8 +25,8 @@
         methods: {
             login() {
                 if(this.input.username != "" && this.input.password != "") {
-                  console.log("username: " + this.mockAccount.username);
-                  console.log("password: " + this.mockAccount.password);
+                  //console.log("username: " + this.mockAccount.username);
+                  //console.log("password: " + this.mockAccount.password);
                     if(this.input.username == this.mockAccount.username && this.input.password == this.mockAccount.password) {
                         this.$emit("authenticated", true);
                         this.$router.replace({ name: "secure" });

@@ -13,13 +13,6 @@ Private
 - All Public User capabilities
 - View private smart city data layers (e.g. Security Camera data)
 
-Admin
-- Log in required
-- All Public and Private User capabilities
-- Create new data layers
-- Edit existing data layers
-- Control data layer access based on user type
-
 ### Air Quality Sensor Layer
 
 Components
@@ -31,26 +24,13 @@ Components
         - Location
         - Sensor Name
     - Security Camera Node
-        - Location
-        - Direction
-        - Status
-        - Date/Time
         - Camera Name
-    - New Node Template
-        - Primary Data
-        - Secondary Data
-        - Secondary Data
-        - Date/Time
-        - Data Label
 - Side Panel Popup
     - Historical Air Quality Data
         - Label or Title
         - Graph
-        - Aggregate Data (different averages)
     - Security Camera Data (and Controls?)
         - Live Camera Feed
-        - Camera Controls (activate, deactivate, etc?)
-    - New Panel Template (brainstorm other options?)
 
 ## Style Guide Resources
 
@@ -66,13 +46,18 @@ Only using Vue.js, not other app frameworks
 
 To run app locally:
 - cd to /frontend/vue-smartmap
-- run 'npm run dev' in the terminal
+- run 'npm install' & 'npm run dev' in the terminal
 - access page from local host
 - other dev instructions found in frontend/vue-smartmap/README.md
 
 ### Map Work
 
-Here
+The map uses a json of coordinates to populate markers that are labelled with PM 2.5 measurements and color coded. Clicking on the marker will display historical data using grafana.
+
+Goal:
+- Populate Markers
+- Create custom markers
+- Display historical data
 
 ### Login Pages
 
@@ -84,33 +69,41 @@ Goal:
 - access SecureView (/secure endpoint)
 - only be able to access secure page if LOGGED IN
 
-Here
 
 ## Secure Page
 
-Here
+Secure Page is only accessible after authentication. This will display the camera locations as markers. Clicking the marker will open a new tab with live camera feed.
 
 ### Vue Code Documentation
 
-## Directory
+## src/views
 
-# File
+# HomeView.vue
 
-Function
+Public map pages. Shows real time and historic air quality. Uses custom markers and grafana iframe.
 
-# File
+# Login.vue
 
-Function
+Login page.
 
-## Directory
+# Secure.vue
 
-# File
+Page loads after authentication. Much like HomeView.vue, it uses custom markers and rtsp to display camera location and feed.
 
-Function
+## src
 
-# File
+# useGeolocation.js
 
-Function
+Prompts user to allow location. Defaults to Utopia Fiber HQ if no location given.
 
+## src/data
+
+# camera.json
+
+location data for cameras. Add to json to expand number of cameras displayed.
+
+# sensors.json
+
+this points to dummy data for air quality sensors. On live server this file is called current.json.
 
 ** [Helpful Markdown Guide](https://www.markdownguide.org/cheat-sheet/) ***
