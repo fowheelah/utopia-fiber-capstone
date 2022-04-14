@@ -2,21 +2,11 @@
 
 ## Main Functiolity
 
-Here
+Gather data from PurpleAir API.
 
 ## File Function Documentation
 
-### API.txt
-
-Description/purpose
-
-can put code snippets like this
-
-```
-code
-```
-
-or like this `code snippet`
+Backend pulls new data from PurpleAir API via datapull.py Python script. Data is inserted into database via insert.py Python script.
 
 ### datapull.py
 
