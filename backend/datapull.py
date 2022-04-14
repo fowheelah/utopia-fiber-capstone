@@ -7,9 +7,11 @@ import datetime
 import os
 import psycopg2
 
+#open current.json file on server
 datestring = "/home/Scripts/jsonfiles/current.json"
 open(datestring, 'w').close()
 
+#create API call for PurpleAir API
 url= 'https://api.purpleair.com/v1/sensors?fields=name,latitude,longitude,pm2.5_10minute,humidity,temperature,pressure&location_type=0&nwlng=-112.4&nwlat=41.74&selng=-111.55&selat=39.89'
 headers = {'X-API-Key' : ##Insert API Key HERE}
 r = requests.get(url, headers = headers)
@@ -20,6 +22,7 @@ time = files['time_stamp']
 data_time = files['data_time_stamp']
 sensor = {"time_stamp":time, "data_time_stamp":data_time}
 arr = []
+#Parse data into JSON format	   
 for x in range(len(data_json)):
 	data = {}
 	row = data_json[x]
@@ -34,7 +37,7 @@ sensor["data"] = arr
 
 with open(datestring, "w") as f:
 	json.dump(sensor, f, indent=4, sort_keys=True)
-
+#Open connection to database with enviornment variables
 CONNECTION = "dbname=" + os.environ['DBNAME'] +" user=" + os.environ['DBUSER'] +" password=" + os.environ['DBPASS'] +" host=" + os.environ['DBIP'] + " port=" + os.environ['DBPORT'] + " sslmode=require"
 conn = psycopg2.connect(CONNECTION)
 cursor = conn.cursor()
@@ -45,6 +48,7 @@ time = content['data_time_stamp']
 updatedTimestamp = datetime.datetime.fromtimestamp(int(time)).strftime('%Y-%m-%d %H:%M:%S')
 print(updatedTimestamp + " -07:00")
 
+#insert data into database	   
 for x in data:
 	sensor_index = x['sensor_index']
 	sensor_name = x['name']
