@@ -5,9 +5,9 @@
 import { computed, ref, onMounted } from "vue";
 import { useGeolocation } from "../useGeolocation";
 import { Loader } from "@googlemaps/js-api-loader";
-import camera from "../data/cameras.json"; //modify to add or remove cameras
+import camera from "../data/cameras.json";
 import CameraIcon from "../components/icons/camera.svg";
-const GOOGLE_MAPS_API_KEY = ""; //add api key here
+const GOOGLE_MAPS_API_KEY = "AIzaSyCE3beFO3ElLgnWXvX2kiQrhjz5gsSz19c";
 
 export default {
   name: "App",
@@ -21,6 +21,7 @@ export default {
     const mapDiv = ref(null);
     const authenticated = false;
     onMounted(async () => {
+      //sensorInfo = await fetch(url);
       await loader.load();
       const map = new google.maps.Map(mapDiv.value, {
         center: currPos.value,
@@ -36,6 +37,7 @@ export default {
             lat: camera.data[index].latitude,
             lng: camera.data[index].longitude,
           },
+          // label: camera.data[index].name,
           map: map,
           icon: CameraIcon,
         });
@@ -43,12 +45,14 @@ export default {
           if (activeInfoWindow) {
             activeInfoWindow.close();
           }
-          infowindow.open({
+          /*infowindow.open({
             anchor: marker,
             map,
             shouldFocus: true,
-          });
+          });*/
           activeInfoWindow = infowindow;
+          const url = "http://10.128.14.220/video/" + index;
+          window.open(url, '_blank');
         });
         google.maps.event.addListener(map, "click", function(event){
           infowindow.close();
@@ -69,6 +73,7 @@ export default {
 @media (min-width: 1024px) {
   .login {
     min-height: 100vh;
+    /* display: flex; */
     align-items: center;
   }
 }
